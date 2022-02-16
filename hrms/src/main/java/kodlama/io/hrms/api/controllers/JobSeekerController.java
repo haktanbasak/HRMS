@@ -27,12 +27,12 @@ public class JobSeekerController {
 	}
 	
 	@GetMapping("/getall")
-	DataResult<List<JobSeeker>> getAll(){
+	public DataResult<List<JobSeeker>> getAll(){
 		return this.jobSeekerService.getAll();
 	}
 	
 	@PostMapping("/add")
-	Result add(@RequestBody JobSeeker jobSeeker) throws NumberFormatException, RemoteException {
+	public Result add(@RequestBody JobSeeker jobSeeker) throws NumberFormatException, RemoteException {
 		return this.jobSeekerService.addJobSeeker(jobSeeker);
 	}
 }
