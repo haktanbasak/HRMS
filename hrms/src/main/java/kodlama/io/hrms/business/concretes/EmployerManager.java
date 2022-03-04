@@ -57,7 +57,7 @@ public class EmployerManager implements EmployerService {
 	}
 	
 	public Result employerCheck(Employer employer) {
-		if(employer.getCompany_name() == null) {
+		if(employer.getCompanyName() == null) {
 			return new ErrorResult("İsim boş bırakılamaz");
 		}
 		else if(employer.getWeb_address() == null) {

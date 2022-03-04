@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -17,28 +18,26 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name="employers")
 @Data
-@EqualsAndHashCode(callSuper = false)
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobAdvertisements"})
-public class Employer extends User{
+@Table(name="city")
+@EqualsAndHashCode
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","job_advertisements","jobAdvertisements"})
+public class City {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="company_name")
-	private String companyName;
+	@Column(name="city_name")
+	private String cityName;
 	
-	@Column(name="web_address")
-	private String web_address;
-	
-	@Column(name="phone_number")
-	private String phone_number;
-	
-	@OneToMany(mappedBy = "employer")
+	@JsonIgnore
+	@OneToMany(mappedBy="city")
 	private List<JobAdvertisement> jobAdvertisements;
+	
+	
+	
 }
